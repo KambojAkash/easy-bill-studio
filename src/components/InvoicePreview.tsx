@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { InvoiceData } from '@/types';
+import { cn } from '@/lib/utils';
 import { 
   calculateSubtotal, 
   calculateTaxAmount, 
@@ -17,10 +17,16 @@ interface InvoicePreviewProps {
 const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice }) => {
   const subtotal = calculateSubtotal(invoice.lineItems);
   const taxAmount = calculateTaxAmount(subtotal, invoice.taxRate);
-  const total = calculateTotal(subtotal, taxAmount);
+  const total = calculateTotal(subtotal, invoice.taxRate);
+
+  const templateStyles = {
+    classic: 'font-serif',
+    modern: 'font-sans',
+    minimal: 'font-mono',
+  }[invoice.template];
 
   return (
-    <div className="invoice-preview">
+    <div className={cn("invoice-preview", templateStyles)}>
       <div className="flex justify-between items-start mb-8">
         <div>
           <h1 className="text-3xl font-bold mb-1 text-invoice-blue">INVOICE</h1>

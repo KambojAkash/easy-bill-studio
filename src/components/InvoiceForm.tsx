@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { useToast } from '@/hooks/use-toast';
@@ -17,6 +16,7 @@ import ClientInfo from './ClientInfo';
 import BusinessInfo from './BusinessInfo';
 import { calculateSubtotal, calculateTaxAmount, calculateTotal, calculateLineItemAmount, formatCurrency, currencyList, taxRates, createEmptyInvoice } from '@/utils/invoiceUtils';
 import { cn } from '@/lib/utils';
+import InvoiceTemplates from './InvoiceTemplates';
 
 interface InvoiceFormProps {
   initialInvoice?: InvoiceData;
@@ -131,6 +131,11 @@ const InvoiceForm: React.FC<InvoiceFormProps> = ({
           </Button>
         </div>
       </div>
+      
+      <InvoiceTemplates
+        selectedTemplate={invoice.template}
+        onSelectTemplate={(template) => setInvoice({ ...invoice, template })}
+      />
       
       <BusinessInfo business={business} setBusiness={setBusiness} />
       <ClientInfo client={client} setClient={setClient} />

@@ -48,4 +48,5 @@ export type InvoiceData = {
   notes?: string;
   currency: Currency;
   status: 'draft' | 'sent' | 'paid' | 'overdue';
+  template: string;
 };
