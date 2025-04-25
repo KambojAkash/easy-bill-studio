@@ -1,5 +1,5 @@
-
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
 import { useReactToPrint } from 'react-to-print';
@@ -87,8 +87,23 @@ const Index = () => {
       </main>
       
       <footer className="bg-white border-t py-3 px-6">
-        <div className="container text-center text-sm text-muted-foreground">
-          EasyBill Studio © {new Date().getFullYear()} - Professional Invoice Generator
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-sm text-muted-foreground">
+              EasyBill Studio © {new Date().getFullYear()} - Professional Invoice Generator
+            </div>
+            <div className="flex gap-6 text-sm">
+              <Link to="/about" className="text-muted-foreground hover:text-primary">
+                About
+              </Link>
+              <Link to="/privacy" className="text-muted-foreground hover:text-primary">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="text-muted-foreground hover:text-primary">
+                Terms of Service
+              </Link>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
