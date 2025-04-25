@@ -15,8 +15,8 @@ export const calculateSubtotal = (lineItems: LineItemType[]): number => {
   return lineItems.reduce((sum, item) => sum + item.amount, 0);
 };
 
-export const calculateTaxAmount = (subtotal: number, taxRate: TaxRate): number => {
-  return subtotal * (taxRate.rate / 100);
+export const calculateTaxAmount = (subtotal: number, taxRate: number): number => {
+  return subtotal * (taxRate / 100);
 };
 
 export const calculateTotal = (subtotal: number, taxAmount: number): number => {
@@ -63,5 +63,5 @@ export const createEmptyInvoice = (): InvoiceData => ({
   taxRate: taxRates[0],
   currency: currencyList[0],
   status: 'draft',
-  template: 'classic',
+  template: 'modern',
 });
